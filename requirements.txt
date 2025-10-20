@@ -1,7 +1,7 @@
 flask
 flask-cors
 torch
-torchvision
+torchvision>=0.16.2
 pillow
 numpy
 opencv-python
