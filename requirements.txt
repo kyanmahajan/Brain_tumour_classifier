@@ -1,6 +1,6 @@
 torch
 torchvision
-pytorch-grad-cam
+git+https://github.com/jacobgil/pytorch-grad-cam.git
 flask
 flask-cors
 numpy
