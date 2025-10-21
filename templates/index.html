@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brain Tumor Classifier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        input[type="file"] {
+            margin: 20px;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 400px;
+        }
+        .prediction {
+            font-size: 1.2em;
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Brain Tumor Classification</h1>
+    <p>Upload an X-ray/MRI image to classify and visualize using Grad-CAM</p>
+
+    <input type="file" id="imageInput" accept="image/*">
+    <br>
+    <button onclick="uploadImage()">Predict</button>
+
+    <div class="prediction" id="prediction"></div>
+    <img id="camImage" src="" style="display: none;">
+
+    <script>
+        async function uploadImage() {
+            const input = document.getElementById("imageInput");
+            const file = input.files[0];
+
+            if (!file) {
+                alert("Please select an image.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", file);
+
+            const response = await fetch("/predict", {
+                method: "POST",
+                body: formData,
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                document.getElementById("prediction").textContent = "Prediction: " + result.prediction;
+                const camImage = document.getElementById("camImage");
+                camImage.src = result.cam_image_url;
+                camImage.style.display = "block";
+            } else {
+                document.getElementById("prediction").textContent = "Error: " + result.error;
+            }
+        }
+    </script>
+
+</body>
+</html>
