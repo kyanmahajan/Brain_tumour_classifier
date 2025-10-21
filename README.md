@@ -27,7 +27,6 @@ The system is exposed as a **Flask API**, enabling image upload and real-time pr
 
 ## 2. Data Preprocessing Pipeline
 
-### 2.1 Image Transformation
 
 To ensure that images match the input expected by the trained ResNet-18 model:
 
@@ -36,5 +35,9 @@ To ensure that images match the input expected by the trained ResNet-18 model:
 3. **ToTensor:** Convert the PIL image into a PyTorch tensor  
 4. **Normalization:** Pixel values normalized using ImageNet mean and standard deviation:
 
-```python
-Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+## Models
+Use resnet18 (light weight 18 version)
+Train accuracy reacher around 90 while test remained close to 70%
+Also tried vision transformers, which performed worse than renset.
+
+
