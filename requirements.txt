@@ -6,4 +6,4 @@ pillow
 numpy
 opencv-python
 matplotlib
-pytorch-gr.ad-cam
+pytorch-grad-cam
