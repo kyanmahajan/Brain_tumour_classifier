@@ -40,4 +40,8 @@ Use resnet18 (light weight 18 version)
 Train accuracy reacher around 90 while test remained close to 70%
 Also tried vision transformers, which performed worse than renset.
 
-
+## Usage
+Clone the repo and run 
+```bash
+!pip install requirements.txt
+!python app.py
