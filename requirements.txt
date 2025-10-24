@@ -6,4 +6,5 @@ pillow
 numpy
 opencv-python
 matplotlib
-pytorch-grad-cam
+git+https://github.com/jacobgil/pytorch-grad-cam.git
+
